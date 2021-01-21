@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "BROWSER='google-chrome-stable' craco start",
-    "build": "craco build",
+    "build": "craco build && echo '/* /index.html 200' | cat >build/_redirects ",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
