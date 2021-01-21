@@ -7,14 +7,14 @@
 will show column-chart for a [dummy data](https://api.github.com/repositories/19438/issues) \
 `Username: MICKY` \
 `Password: 98765` \
-will show pie-chart for the same data.\
+will show pie-chart for the same data.
 
 ## Libraries used: 
 `d3` \
 `tailwindcss` \
 `react-notify` \
 `react-router` \
-`create-react-app` \
+`create-react-app`
 
 
 
