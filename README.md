@@ -1,4 +1,16 @@
-# Getting Started with Create React App
+# Live Site
+
+[Visit](https://practical-bartik-cdceb2.netlify.app/).\
+
+`Username: John` \
+`Password: 12345` \
+will show column-chart for a [dummy data](https://api.github.com/repositories/19438/issues) \
+`Username: MICKY` \
+`Password: 98765` \
+will show pie-chart for the same data.
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
