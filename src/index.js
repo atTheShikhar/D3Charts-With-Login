@@ -1,17 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router,Redirect,Route,Switch} from 'react-router-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import LoginPage from './pages/LoginPage';
+import ChartDashboard from './pages/ChartDashboard';
+import PieDashboard from './pages/PieDashboard';
+
+const authentication = {
+  isLoggedIn: false,
+  onAuthentication() {
+    this.isLoggedIn=true;
+  },
+  getLoginStatus() {
+    return this.isLoggedIn;
+  }
+};
+
+function SecuredRoute(props) {
+  return(
+    <Route path={props.path} render={data => 
+      authentication.getLoginStatus() ? 
+        (<props.component {...data}></props.component>): 
+        (<Redirect to={{pathname: '/'}}></Redirect>)}>
+    </Route>
+  )
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+    <Switch>
+      <Route path="/" exact render={props => <LoginPage {...props} authentication={authentication}/>} />
+      <SecuredRoute path="/column-chart" exact component={props => <ChartDashboard {...props} />} />
+      <SecuredRoute path="/pie-chart" exact component={props => <PieDashboard {...props} />} />
+      <Redirect to="/" />
+    </Switch>
+  </Router>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
